@@ -4,12 +4,14 @@
 pub mod registry;
 #[cfg(windows)]
 pub mod identity;
+pub mod file;
 
 // Re-export commonly used types
 #[cfg(windows)]
 pub use registry::{get_reg_subkeys, get_reg_value, RegistryHive};
 #[cfg(windows)]
 pub use identity::{get_token_group_sids, is_high_integrity, is_local_admin};
+pub use file::{check_modifiable_access, decrypt_gpp_password, find_files, parse_gpp_password_from_xml, GppPassword};
 
 #[cfg(not(windows))]
 pub mod registry {
