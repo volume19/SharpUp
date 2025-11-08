@@ -4,6 +4,10 @@ use crate::error::CheckError;
 
 // Individual check modules
 pub mod always_install_elevated;
+pub mod cached_gpp_password;
+pub mod domain_gpp_password;
+pub mod hijackable_paths;
+pub mod mcafee_sitelist_files;
 pub mod registry_autologons;
 pub mod token_privileges;
 pub mod unattended_install_files;

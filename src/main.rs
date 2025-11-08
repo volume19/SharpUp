@@ -10,8 +10,14 @@ use tracing_subscriber::FmtSubscriber;
 
 // Import all checks
 use sharpup::checks::{
-    always_install_elevated::AlwaysInstallElevated, registry_autologons::RegistryAutoLogons,
-    token_privileges::TokenPrivileges, unattended_install_files::UnattendedInstallFiles,
+    always_install_elevated::AlwaysInstallElevated,
+    cached_gpp_password::CachedGppPassword,
+    domain_gpp_password::DomainGppPassword,
+    hijackable_paths::HijackablePaths,
+    mcafee_sitelist_files::McAfeeSitelistFiles,
+    registry_autologons::RegistryAutoLogons,
+    token_privileges::TokenPrivileges,
+    unattended_install_files::UnattendedInstallFiles,
 };
 
 #[derive(Parser, Debug)]
@@ -37,8 +43,12 @@ fn get_all_checks() -> Vec<(&'static str, Box<dyn VulnerabilityCheck>)> {
             "AlwaysInstallElevated",
             Box::new(AlwaysInstallElevated) as Box<dyn VulnerabilityCheck>,
         ),
-        ("TokenPrivileges", Box::new(TokenPrivileges)),
+        ("CachedGPPPassword", Box::new(CachedGppPassword)),
+        ("DomainGPPPassword", Box::new(DomainGppPassword)),
+        ("HijackablePaths", Box::new(HijackablePaths)),
+        ("McAfeeSitelistFiles", Box::new(McAfeeSitelistFiles)),
         ("RegistryAutoLogons", Box::new(RegistryAutoLogons)),
+        ("TokenPrivileges", Box::new(TokenPrivileges)),
         (
             "UnattendedInstallFiles",
             Box::new(UnattendedInstallFiles),
