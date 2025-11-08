@@ -4,3 +4,8 @@
 [Rr]elease/
 [Bb]in/
 [Oo]bj/
+
+
+# Added by cargo
+
+/target
