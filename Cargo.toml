@@ -1,0 +1,36 @@
+[package]
+name = "sharpup"
+version = "0.1.0"
+edition = "2021"
+authors = ["SharpUp Contributors"]
+license = "BSD-3-Clause"
+description = "Windows privilege escalation enumeration tool (Rust port of SharpUp)"
+repository = "https://github.com/GhostPack/SharpUp"
+
+[dependencies]
+thiserror = "1.0"
+anyhow = "1.0"
+clap = { version = "4.4", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_Security_Authorization",
+    "Win32_System_Registry",
+    "Win32_System_Threading",
+    "Win32_System_Services",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_Memory",
+] }
+
+[dev-dependencies]
+tempfile = "3.8"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
