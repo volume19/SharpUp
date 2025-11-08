@@ -8,6 +8,7 @@
 pub mod checks;
 pub mod error;
 pub mod native;
+pub mod utils;
 
 // Re-exports
 pub use checks::{CheckResult, VulnerabilityCheck};
