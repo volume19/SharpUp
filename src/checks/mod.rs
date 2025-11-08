@@ -4,6 +4,8 @@ use crate::error::CheckError;
 
 // Individual check modules
 pub mod always_install_elevated;
+pub mod registry_autologons;
+pub mod unattended_install_files;
 
 /// Result of a vulnerability check
 #[derive(Debug, Clone)]
