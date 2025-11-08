@@ -105,9 +105,11 @@ fn run_privesc_checks(checks: Vec<Box<dyn VulnerabilityCheck>>, audit_mode: bool
         }
     }
 
-    // Run checks in parallel
+    // Run checks in parallel using rayon
+    use rayon::prelude::*;
+
     let results: Vec<CheckResult> = checks
-        .into_iter()
+        .into_par_iter()
         .filter_map(|check| {
             match check.check() {
                 Ok(result) => Some(result),
