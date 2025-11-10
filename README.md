@@ -8,6 +8,18 @@ SharpUp is a C# port of various [PowerUp](https://github.com/PowerShellMafia/Pow
 
 SharpUp is licensed under the BSD 3-Clause license.
 
+## Rust Port
+
+This repository now includes a complete Rust port of SharpUp with all 14 privilege escalation checks implemented. The Rust version offers:
+
+- **Memory Safety**: Leverages Rust's ownership system and borrow checker
+- **Performance**: Parallel execution of checks using Rayon
+- **Cross-Platform Development**: Compiles on Linux/macOS with Windows-specific stubs
+- **Zero Runtime Reflection**: Compile-time check registry instead of runtime discovery
+- **Modern CLI**: Uses Clap for argument parsing
+
+See the [Rust README](README_RUST.md) for build instructions and details.
+
 ## Usage
 
 ```

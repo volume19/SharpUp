@@ -12,6 +12,12 @@ pub struct GppPassword {
     pub changed: String,
 }
 
+impl Default for GppPassword {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl GppPassword {
     pub fn new() -> Self {
         Self {
@@ -216,13 +222,14 @@ pub fn find_files(path: &str, patterns: &[&str]) -> Vec<String> {
                                 // Simple glob matching
                                 let pattern_lower = pattern.to_lowercase();
                                 let parts: Vec<&str> = pattern_lower.split('*').collect();
-                                if parts.len() == 2 {
-                                    if file_name_lower.starts_with(parts[0]) && file_name_lower.ends_with(parts[1]) {
-                                        if let Some(full_path) = entry.path().to_str() {
-                                            results.push(full_path.to_string());
-                                        }
-                                        break;
+                                if parts.len() == 2
+                                    && file_name_lower.starts_with(parts[0])
+                                    && file_name_lower.ends_with(parts[1])
+                                {
+                                    if let Some(full_path) = entry.path().to_str() {
+                                        results.push(full_path.to_string());
                                     }
+                                    break;
                                 }
                             } else if file_name_lower == pattern.to_lowercase() {
                                 if let Some(full_path) = entry.path().to_str() {

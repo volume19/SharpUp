@@ -15,9 +15,15 @@ use sharpup::checks::{
     domain_gpp_password::DomainGppPassword,
     hijackable_paths::HijackablePaths,
     mcafee_sitelist_files::McAfeeSitelistFiles,
+    modifiable_scheduled_task::ModifiableScheduledTask,
+    modifiable_service_binaries::ModifiableServiceBinaries,
+    modifiable_services::ModifiableServices,
+    process_dll_hijack::ProcessDllHijack,
     registry_autologons::RegistryAutoLogons,
+    registry_autoruns::RegistryAutoruns,
     token_privileges::TokenPrivileges,
     unattended_install_files::UnattendedInstallFiles,
+    unquoted_service_path::UnquotedServicePath,
 };
 
 #[derive(Parser, Debug)]
@@ -47,12 +53,24 @@ fn get_all_checks() -> Vec<(&'static str, Box<dyn VulnerabilityCheck>)> {
         ("DomainGPPPassword", Box::new(DomainGppPassword)),
         ("HijackablePaths", Box::new(HijackablePaths)),
         ("McAfeeSitelistFiles", Box::new(McAfeeSitelistFiles)),
+        (
+            "ModifiableScheduledTask",
+            Box::new(ModifiableScheduledTask),
+        ),
+        (
+            "ModifiableServiceBinaries",
+            Box::new(ModifiableServiceBinaries),
+        ),
+        ("ModifiableServices", Box::new(ModifiableServices)),
+        ("ProcessDLLHijack", Box::new(ProcessDllHijack)),
         ("RegistryAutoLogons", Box::new(RegistryAutoLogons)),
+        ("RegistryAutoruns", Box::new(RegistryAutoruns)),
         ("TokenPrivileges", Box::new(TokenPrivileges)),
         (
             "UnattendedInstallFiles",
             Box::new(UnattendedInstallFiles),
         ),
+        ("UnquotedServicePath", Box::new(UnquotedServicePath)),
     ]
 }
 

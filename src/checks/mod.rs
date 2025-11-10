@@ -8,9 +8,15 @@ pub mod cached_gpp_password;
 pub mod domain_gpp_password;
 pub mod hijackable_paths;
 pub mod mcafee_sitelist_files;
+pub mod modifiable_scheduled_task;
+pub mod modifiable_service_binaries;
+pub mod modifiable_services;
+pub mod process_dll_hijack;
 pub mod registry_autologons;
+pub mod registry_autoruns;
 pub mod token_privileges;
 pub mod unattended_install_files;
+pub mod unquoted_service_path;
 
 /// Result of a vulnerability check
 #[derive(Debug, Clone)]
